@@ -2,12 +2,13 @@ version: 2
 global: &global
   working_directory: ~/project
   docker:
-    - image: felicianotech/docker-hugo:0.30.2
+    - image: cibuilds/hugo:latest
 
 jobs:
   build_n_deploy:
     <<: *global
     steps:
+      - run: apk update && apk add git
       - checkout
       - run:
           name: "Run Hugo"
