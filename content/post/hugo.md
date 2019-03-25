@@ -1,5 +1,5 @@
 ---
-title: "Hugo"
+title: "hugo部署网站，circleci自动构建静态页面"
 date: 2019-03-24T20:52:13+08:00
 draft: false
 ---
@@ -16,6 +16,7 @@ brew install hugo
 ```
 hugo new site my-website
 cd my-website
+git init
 ```
 
 `my-website` 可以替换成任意名称，但你也可以跟我一样，避免麻煩。找到名为 `my-website` 的文件夾，观察文件夹结构。
@@ -23,7 +24,7 @@ cd my-website
 ### 3. 新增主題 [(theme)](https://themes.gohugo.io)：此处以 [Casper](https://themes.gohugo.io/casper/) 为例
 
 ```
-git clone https://github.com/vjeantet/hugo-theme-casper themes/casper
+git submodule add git@github.com:vjeantet/hugo-theme-casper.git themes/casper
 ```
 
 你也可以选其他主題，进到该主題的 GitHub repo，將上面的网址改成 repo 的网址、`themes/casper` 改成 `themes/你的主題名称`。
@@ -75,11 +76,13 @@ hugo
 ### 3. 将 /public 文件夾连接到 GitHub 上的 kenwoodjw.github.io
 
 ```
+#建立submodule
+git submodule add git@github.com:<your-account>/<your-account>.github.io.git public
+#上传submodule
 cd public
-git init
-git remote add origin https://github.com/chswei/kenwoodjw.github.io.git
-git add .
-git commit -m "Initial commit"
+git status
+git commit -m "first commit"
+git remote add origin git@github.com:<you-account>/<your-account>.github.io.git
 git push -u origin master
 ```
 
@@ -87,7 +90,6 @@ git push -u origin master
 
 ```
 cd ../
-git init
 git remote add origin https://github.com/kenwood/my-website.git
 git add .
 git commit -m "Initial commit"
@@ -100,6 +102,48 @@ git push -u origin master
 
 等个几分钟，输入网址 https://kenwoodjw.github.io/ 就大功告成！
 
+### 5.自动构建静态页面并上传到git
+使用circleci，打开https://circleci.com链接github仓库，在项目顶层，新建.circleci/config.yml
+```
+version: 2
+global: &global
+  working_directory: ~/project
+  docker:
+    - image: cibuilds/hugo:latest
+
+jobs:
+  build_n_deploy:
+    <<: *global
+    steps:
+      - run: apk update && apk add git
+      - checkout
+      - run:
+          name: "Run Hugo"
+          command: |
+            git submodule sync && git submodule update --init 
+            git submodule foreach --recursive git pull origin master
+            HUGO_ENV=production hugo -v
+
+      - run:
+          name: "Deploy to github.io"       
+          command: |
+            cd ~/project/public
+            git config --global user.email "xxxgmail.com"
+            git config --global user.name "xxx"
+            git add -A
+            git commit -m "Deploy from CircleCI"
+            git push origin HEAD:master
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build_n_deploy:
+          filters:
+            branches:
+              only: master
+
+```
 
 
 ### References:
@@ -107,3 +151,4 @@ git push -u origin master
 1. [Hugo Documentation](https://gohugo.io/documentation/)
 2. [用Hugo搭建个人网站](https://brent-li.github.io/post/build-personal-site-with-hugo/)
 3. [Github个人网站维护](https://chengjunwang.com/note/note_archive/2016-08-03-github/)
+4. [jimmylin blog](https://jimmylin212.github.io/post/0001_create_hugo_and_deploy_on-github_page/)
