@@ -5,7 +5,7 @@ draft: false
 tags: ["hugo"]
 comments: true
 share: true
-iisCJKLanguage: true
+isCJKLanguage: true
 ---
 
 
