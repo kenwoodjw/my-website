@@ -1,8 +1,7 @@
 ---
 title: "每天一个python标准库00"
 date: 2019-04-08T22:41:26+08:00
-draft: true
-tags: python
+draft: false
 ---
 
 ## itertools --- 为高效循环而创建迭代器的函数

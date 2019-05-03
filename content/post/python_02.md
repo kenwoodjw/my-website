@@ -2,6 +2,7 @@
 title: "Python后端架构演进"
 date: 2019-04-22T23:25:20+08:00
 draft: false
+isCJKLanguage: true
 ---
 
 转载自https://zhu327.github.io/2018/07/19/python%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/

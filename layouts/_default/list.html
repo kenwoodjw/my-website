@@ -1,61 +1,63 @@
-{{ partial "header.html" . }}
+{{ define "main" }}
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        {{ with .Content }}
+          <div class="well">
+            {{.}}
+          </div>
+        {{ end }}
+        <div class="posts-list">
+          {{ range .Paginator.Pages }}
+            <article class="post-preview">
+              <a href="{{ .Permalink }}">
+                <h2 class="post-title">{{ .Title }}</h2>
 
+                {{ if .Params.subtitle }}
+                  <h3 class="post-subtitle">
+                    {{ .Params.subtitle }}
+                  </h3>
+                {{ end }}
+              </a>
 
-{{if .Params.cover}}
-	{{if or (eq (substr .Params.cover 0 7) "http://") (eq (substr .Params.cover 0 8) "https://")}}
-  <header class="main-header tag-head" style="background-image: url({{.Params.cover}})">
-  {{ else }}
-  <header class="main-header tag-head" style="background-image: url({{.Params.cover | relURL}})">
-  {{ end }}
-{{else if .Site.Params.cover}}
-	 {{if or (eq (substr .Site.Params.cover 0 7) "http://") (eq (substr .Site.Params.cover 0 8) "https://")}}
-  <header class="main-header tag-head" style="background-image: url({{.Site.Params.cover}})">
-  {{ else }}
-  <header class="main-header tag-head" style="background-image: url({{.Site.Params.cover  | relURL}})">
-  {{ end }}
-{{else}}
-	<header class="main-header tag-head no-cover">
-{{end}}
-    <nav class="main-nav overlay clearfix">
-      {{ if .Site.Params.logo }}
-        <a class="blog-logo" href="{{.Site.BaseURL}}"><img src="{{ .Site.Params.logo | relURL}}" alt="Home" /></a>
-      {{end}}
-      {{ if .Site.Menus.main }}
-          <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
-      {{else}}
-        {{ if .Site.Params.RSSLink}}
-          <a class="menu-button icon-feed" href="{{.Site.Params.RSSLink }}">&nbsp;&nbsp;Subscribe</a>
-        {{else}}
-          <a class="menu-button icon-feed" href="{{ .RSSLink }}">&nbsp;&nbsp;Subscribe</a>
-        {{end}}
-      {{end}}
-    </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">{{.Title}}</h1>
-            <h2 class="page-description">
-                {{if .Params.description}}
-                    {{.Params.description}}
-                {{end}}
-            </h2>
+              <p class="post-meta">
+                {{ partial "post_meta.html" . }}
+              </p>
+              <div class="post-entry">
+                {{ if .Truncated }}
+                  {{ .Summary }}
+                  <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
+                {{ else }}
+                  {{ .Content }}
+                {{ end }}
+              </div>
+
+              {{ if .Params.tags }}
+                <div class="blog-tags">
+                  {{ range .Params.tags }}
+                    <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+                  {{ end }}
+                </div>
+              {{ end }}
+
+            </article>
+          {{ end }}
         </div>
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+          <ul class="pager main-pager">
+            {{ if .Paginator.HasPrev }}
+              <li class="previous">
+                <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
+              </li>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+              <li class="next">
+                <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
     </div>
-</header>
-
-<main class="content" role="main">
-    {{ $paginator := .Paginator }}
-
-	<div class="extra-pagination inner">
-    {{ partial "pagination.html" $paginator }}
-	</div>
-
-	{{ range $index, $page := $paginator.Pages }}
-	   {{ partial "li.html" . }}
-	{{ end }}
-
-	{{ partial "pagination.html" $paginator }}
-</main>
-
-
-
-{{ partial "footer.html" . }}
+  </div>
+{{ end }}

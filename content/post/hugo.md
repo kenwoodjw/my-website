@@ -2,6 +2,10 @@
 title: "hugo部署网站，circleci自动构建静态页面"
 date: 2019-03-24T20:52:13+08:00
 draft: false
+tags: ["hugo"]
+comments: true
+share: true
+menu: ""
 ---
 
 

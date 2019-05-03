@@ -1,0 +1,43 @@
+baseURL = "https://kenwoodjw.github.io/"
+languageCode = "zh-cn"
+title = "Kenwood Blog"
+paginate = 5    #分頁每頁記錄數
+pluralizelisttitles = false
+Copyright = "Copyright © 2018"
+DisqusShortname = "kenwoodjw"    #評論時顯示的名字
+canonifyurls = true 
+
+pygmentsCodefences = true     #高亮markdown的代碼塊
+pygmentsCodefencesGuessSyntax = true    #高亮markdown中沒有標注語言的代碼塊
+pygmentsStyle = 'monokai'    #高亮主題
+
+[params]
+  description = "记录所学的点滴"    #副標題
+  cover = "images/python-go.jpg"    #封面照片
+  author = "kenwoodjw"    #文章作者
+  authorlocation = "China"    #作者位置
+  authorwebsite = "https://kenwoodjw.github.io/"    #作者站點
+  bio= "醫學生，最近對資料科學產生興趣"    #作者簡介
+  # logo = "images/Einstan.jpg"    #作者頭像
+  googleAnalyticsUserID = "UA-136760087-1" 
+  # Optional RSS-Link, if not provided it defaults to the standard index.xml
+  #RSSLink = "http://feeds.feedburner.com/..."
+  githubName = "kenwoodjw"    #GitHub用戶名
+  # facebookName = ""
+  # linkedinName = ""    #LinkedIn用戶名
+  # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
+  hideHUGOSupport = false    #是否顯示Hugo水印
+  [params.social]
+  #   linkedin = "https://cn.linkedin.com/in/zifeng"
+
+[[menu.main]]    #頁面菜單參數
+  name = "My Blog"
+  weight = -120
+  identifier = "blog"
+  url = "/"
+
+[[menu.main]]
+  name = "About me"
+  weight = -110
+  identifier = "about"
+  url = "/about"

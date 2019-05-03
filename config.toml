@@ -1,43 +1,102 @@
-baseURL = "https://kenwoodjw.github.io/"
-languageCode = "zh-cn"
-title = "Kenwood Blog"
-paginate = 5    #分頁每頁記錄數
-pluralizelisttitles = false
-Copyright = "Copyright © 2018"
-DisqusShortname = "kenwoodjw"    #評論時顯示的名字
-canonifyurls = true 
+baseurl = "https://kenwoodjw.github.io"
+DefaultContentLanguage = "en"
+title = "Kenwood Chan"
+theme = "beautifulhugo"
+metaDataFormat = "yaml"
+pygmentsStyle = "trac"
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+#pygmentsUseClassic = true
+#pygmentOptions = "linenos=inline"
+disqusShortname = "kenwoodjw-github-io"
+googleAnalytics = "UA-136760087-1"
 
-pygmentsCodefences = true     #高亮markdown的代碼塊
-pygmentsCodefencesGuessSyntax = true    #高亮markdown中沒有標注語言的代碼塊
-pygmentsStyle = 'monokai'    #高亮主題
+[Params]
+  #homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
+  subtitle = "Engineer - Reader - Diver"
+  logo = "images/kenwood.jpg"
+  favicon = "img/favicon.ico"
+  dateFormat = "January 2, 2006"
+  commit = false
+  rss = true
+  comments = true
+  readingTime = true
+  useHLJS = true
+  socialShare = true
+#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 
-[params]
-  description = "记录所学的点滴"    #副標題
-  cover = "images/python-go.jpg"    #封面照片
-  author = "kenwoodjw"    #文章作者
-  authorlocation = "China"    #作者位置
-  authorwebsite = "https://kenwoodjw.github.io/"    #作者站點
-  bio= "醫學生，最近對資料科學產生興趣"    #作者簡介
-  # logo = "images/Einstan.jpg"    #作者頭像
-  googleAnalyticsUserID = "UA-136760087-1" 
-  # Optional RSS-Link, if not provided it defaults to the standard index.xml
-  #RSSLink = "http://feeds.feedburner.com/..."
-  githubName = "kenwoodjw"    #GitHub用戶名
-  # facebookName = ""
-  # linkedinName = ""    #LinkedIn用戶名
-  # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
-  hideHUGOSupport = false    #是否顯示Hugo水印
-  [params.social]
-  #   linkedin = "https://cn.linkedin.com/in/zifeng"
+#[[Params.bigimg]]
+#  src = "img/triangle.jpg"
+#  desc = "Triangle"
+#[[Params.bigimg]]
+#  src = "img/sphere.jpg"
+#  desc = "Sphere"
+#  # position: see values of CSS background-position.
+#  position = "center top"
+#[[Params.bigimg]]
+#  src = "img/hexagon.jpg"
+#  desc = "Hexagon"
 
-[[menu.main]]    #頁面菜單參數
-  name = "My Blog"
-  weight = -120
-  identifier = "blog"
-  url = "/"
+[Author]
+  name = "kenwood Chan"
+  website = "kenwoodjw.github.io"
+  #email = "blackxin55@gmail.com"
+  #facebook = "jimmylin212"
+  #stackoverflow = "users/743158/jimmy-lin"
+  github = "kenwoodjw"
+  #linkedin = "jimmylin212"
+  #googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
+  #gitlab = "username"
+  #bitbucket = "username"
+  #twitter = "username"
+  #reddit = "username"
+  #xing = "username"
+  #snapchat = "username"
+  #instagram = "username"
+  #youtube = "user/username" # or channel/channelname
+  #soundcloud = "username"
+  #spotify = "username"
+  #bandcamp = "username"
+  #itchio = "username"
+  #vk = "username"
+  #paypal = "username"
+  #telegram = "username"
 
 [[menu.main]]
-  name = "About me"
-  weight = -110
-  identifier = "about"
-  url = "/about"
+    name = "Blog"
+    url = ""
+    weight = 1
+
+#[[menu.main]]
+#    name = "About"
+#    url = "about/"
+#    weight = 3
+
+#[[menu.main]]
+#    identifier = "samples"
+#    name = "Samples"
+#    weight = 2
+
+#[[menu.main]]
+#    parent = "samples"
+#    name = "Big Image Sample"
+#    url = "post/2017-03-07-bigimg-sample"
+#    weight = 1
+
+#[[menu.main]]
+#    parent = "samples"
+#    name = "Math Sample"
+#    url = "post/2017-03-05-math-sample"
+#    weight = 2
+
+#[[menu.main]]
+#    parent = "samples"
+#    name = "Code Sample"
+#    url = "post/2016-03-08-code-sample"
+#    weight = 3
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 3
