@@ -1,12 +1,12 @@
 baseurl = "https://kenwoodjw.github.io"
-DefaultContentLanguage = "en"
+DefaultContentLanguage = "zh-cn"
 title = "Kenwood Chan"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
-pygmentsStyle = "trac"
+pygmentsCodefences = true     #高亮markdown的代碼塊
+pygmentsCodefencesGuessSyntax = true    #高亮markdown中沒有標注語言的代碼塊
+pygmentsStyle = 'monokai'    #高亮主題
 pygmentsUseClasses = true
-pygmentsCodeFences = true
-pygmentsCodefencesGuessSyntax = true
 #pygmentsUseClassic = true
 #pygmentOptions = "linenos=inline"
 disqusShortname = "kenwoodjw-github-io"
@@ -24,6 +24,7 @@ googleAnalytics = "UA-136760087-1"
   readingTime = true
   useHLJS = true
   socialShare = true
+  wordCount = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 
 #[[Params.bigimg]]
