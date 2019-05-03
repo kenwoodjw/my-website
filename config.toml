@@ -9,7 +9,7 @@ pygmentsStyle = 'monokai'    #高亮主題
 pygmentsUseClasses = true
 #pygmentsUseClassic = true
 #pygmentOptions = "linenos=inline"
-disqusShortname = "kenwoodjw-github-io"
+disqusShortname = "kenwoodjw"
 googleAnalytics = "UA-136760087-1"
 
 [Params]
