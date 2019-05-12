@@ -4,8 +4,7 @@ date: 2019-05-11T22:15:01+08:00
 draft: false
 author: "kenwood"
 isCJKLanguage: true
-tags: ["Hugo", "GitHub", "CircleCI", "Build", "Docker", "Books", "Nextjs", "Nodejs", "Golang", "GraphQL", "Backend", "Frontend", "Angular"]
-categories: ["Web App Development", "Software Development", "DevOps", "Books", "Front-end Development", "Back-end Development"]
+tags: ["python"]
 ---
 
 ### python装饰器
@@ -125,11 +124,10 @@ Hello, this is before function execution
 This is inside the function !!
 This is after function execution
 
-{{< figure src="/images/decorators_step.png" width="" height="" >}}
 
 ```
 
-![img](/home/kenwood/Projects/my-website/static/images/decorators_step.png)
+{{< figure src="/images/decorators_step.png" width="" height="" >}}
 
 ### Decorator的执行顺序
 
